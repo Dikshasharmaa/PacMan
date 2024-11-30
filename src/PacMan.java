@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.HashSet;
 
-public class PacMan extends JPanel implements ActionListener{
+public class PacMan extends JPanel implements ActionListener, KeyListener{
     class Block{
         int x;
         int y;
@@ -98,6 +98,9 @@ public class PacMan extends JPanel implements ActionListener{
         loadMap();
         gameloop = new Timer(50, this); // 50 delay and thisrefers to pacmanb object
         gameloop.start();
+
+        addKeyListener(this);
+        setFocusable(true);
         
     }
     public void loadMap(){
@@ -169,6 +172,15 @@ public class PacMan extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();  //repeat the paint function
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {}
+    @Override
+    public void keyPressed(KeyEvent e) {}
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+       System.out.println("KeyEvent: " + e.getKeyCode());
     }
 
 }

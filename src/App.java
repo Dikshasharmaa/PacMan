@@ -21,6 +21,8 @@ public class App {
          // To get full size of panel within the window 
         frame.pack();
         frame.setVisible(true);
+        pacmanGame.requestFocus();
+
 
 
 
