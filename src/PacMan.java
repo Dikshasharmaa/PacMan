@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.HashSet;
 
-public class PacMan extends JPanel{
+public class PacMan extends JPanel implements ActionListener{
     class Block{
         int x;
         int y;
@@ -75,6 +75,9 @@ public class PacMan extends JPanel{
     HashSet<Block> ghosts;
     Block pacman;
 
+    Timer gameloop;
+
+
 
     PacMan(){
         setPreferredSize(new Dimension(boardWidth, boardHeight));
@@ -93,6 +96,8 @@ public class PacMan extends JPanel{
         pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage(); 
 
         loadMap();
+        gameloop = new Timer(50, this); // 50 delay and thisrefers to pacmanb object
+        gameloop.start();
         
     }
     public void loadMap(){
@@ -158,9 +163,12 @@ public class PacMan extends JPanel{
         g.setColor(Color.white);
         for(Block food: food){
             g.fillRect(food.x, food.y, food.width, food.height);
-        }
-        
+        } 
 
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();  //repeat the paint function
     }
 
 }
