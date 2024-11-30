@@ -4,6 +4,26 @@ import javax.swing.*;
 import java.util.HashSet;
 
 public class PacMan extends JPanel{
+    class Block{
+        int x;
+        int y;
+        int width;
+        int height;
+        Image image;
+
+        int startX;
+        int startY;
+
+        Block(Image image, int x, int y, int width, int height){
+            this.image = image;
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.startX = x;
+            this.startY = y;
+        }
+    }
     private int rows = 21;
     private int columns = 19;
     private int tileSize = 32;
@@ -36,7 +56,7 @@ public class PacMan extends JPanel{
         pacmanUpImage = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
         pacmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
         pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
-        pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
+        pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage(); 
 
 
 
