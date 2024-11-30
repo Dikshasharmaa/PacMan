@@ -92,10 +92,52 @@ public class PacMan extends JPanel{
         pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
         pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage(); 
 
-
-
-
         
+    }
+    public void loadMap(){
+        walls = new HashSet<Block>();
+        food = new HashSet<Block>();
+        ghosts = new HashSet<Block>();
+
+        for(int i =0; i<rows; i++){
+            for(int j =0; j<columns; j++){
+                String row = tileMap[i]; // getting curent row
+                char tileChar = row.charAt(j); //getting current char 
+
+                int x = j* tileSize;
+                int y = i*tileSize;
+
+                if(tileChar == 'X'){
+                    Block wall = new Block(wallImage, x, y, tileSize, tileSize);
+                    walls.add(wall);
+                }
+                else if (tileChar == 'b') {
+                    Block ghost = new Block(blueGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(ghost);
+                }
+                else if (tileChar == 'o') {
+                    Block oGhost = new Block(orangeGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(oGhost);
+                }
+                else if (tileChar == 'r') {
+                    Block rGhost = new Block(redGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(rGhost);
+                }
+                else if (tileChar == 'p') {
+                    Block pGhost = new Block(pinkGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(pGhost);
+                }
+                else if (tileChar == 'P') {
+                    pacman = new Block(pacmanRightImage, x, y, tileSize, tileSize);
+                    
+                }
+                else if (tileChar == ' ') {
+                    Block food = new Block(null, x+14, y+14, 4, 4);
+                    
+                }
+
+            }
+        }
     }
 
 }
