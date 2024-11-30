@@ -92,6 +92,7 @@ public class PacMan extends JPanel{
         pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
         pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage(); 
 
+        loadMap();
         
     }
     public void loadMap(){
@@ -132,12 +133,21 @@ public class PacMan extends JPanel{
                     
                 }
                 else if (tileChar == ' ') {
-                    Block food = new Block(null, x+14, y+14, 4, 4);
-                    
+                    Block foods = new Block(null, x+14, y+14, 4, 4);   
+                    food.add(foods);
                 }
 
             }
         }
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        draw(g);
+
+    }
+    public void draw(Graphics g){
+        g.drawImage(pacman.image, pacman.x, pacman.y, pacman.width, pacman.height, null);
     }
 
 }
