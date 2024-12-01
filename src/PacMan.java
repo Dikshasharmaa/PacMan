@@ -121,6 +121,10 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
     Timer gameloop;
     char[] directions = {'U', 'D', 'L', 'R'};
     Random random = new Random();
+    int score = 0;
+    int lives = 3;
+    boolean gameOver = false;
+
 
 
 
@@ -217,6 +221,13 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
         for(Block food: food){
             g.fillRect(food.x, food.y, food.width, food.height);
         } 
+        g.setFont(new Font("Arial", Font.PLAIN, 18));
+        if (gameOver) {
+            g.drawString("Game Over: " + String.valueOf(score), tileSize/2, tileSize/2);
+        }
+        else {
+            g.drawString("x" + String.valueOf(lives) + " Score: " + String.valueOf(score), tileSize/2, tileSize/2);
+        }
 
     }
 
@@ -232,7 +243,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
                 break;
             }
         }
-
+// Ghost collision
         for(Block ghost : ghosts){
             if(ghost.y == tileSize*9 && ghost.direction != 'U' && ghost.direction != 'D'){
                 ghost.updateDirection('U');
@@ -247,6 +258,16 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
                     ghost.updateDirection(newDirection);
                 }
             }
+        }
+        Block foodEaten = null;
+        for(Block foods : food){
+            if(collision(pacman, foods)){
+                foodEaten = foods;
+                score += 10;
+
+            }
+            food.remove(foodEaten);
+
         }
     }
 
