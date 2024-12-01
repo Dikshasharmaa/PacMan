@@ -204,6 +204,15 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
     public void move(){
         pacman.x += pacman.velocityX;
         pacman.y += pacman.velocityY;
+
+        //check wall collision
+        for(Block wall : walls){
+            if(collision(pacman, wall)){
+                pacman.x -= pacman.velocityX;
+                pacman.y -= pacman.velocityX;
+                break;
+            }
+        }
     }
 
     public boolean collision(Block a, Block b){
