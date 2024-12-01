@@ -226,7 +226,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
 
         //check wall collision
         for (Block wall : walls) {
-            if (collision(pacman, wall)) {
+            if (collision(pacman, wall)|| pacman.x <=0 || pacman.x + pacman.width >= boardWidth) {
                 pacman.x -= pacman.velocityX;
                 pacman.y -= pacman.velocityY;
                 break;
@@ -237,7 +237,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
             ghost.x += ghost.velocityX;
             ghost.y += ghost.velocityY;
             for (Block wall : walls) {
-                if (collision(ghost, wall)) {
+                if (collision(ghost, wall)|| ghost.x <=0 || ghost.x + ghost.width >= boardWidth) {
                     ghost.x -= ghost.velocityX;
                     ghost.y -= ghost.velocityY;
                     char newDirection = directions[random.nextInt(4)];
