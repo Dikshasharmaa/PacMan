@@ -260,15 +260,14 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
             }
         }
         Block foodEaten = null;
-        for(Block foods : food){
-            if(collision(pacman, foods)){
-                foodEaten = foods;
+        for (Block food : food) {
+            if (collision(pacman, food)) {
+                foodEaten = food;
                 score += 10;
-
             }
-            food.remove(foodEaten);
-
         }
+        food.remove(foodEaten);
+
     }
 
     public boolean collision(Block a, Block b){
