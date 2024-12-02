@@ -135,6 +135,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
     PacMan(){
         setPreferredSize(new Dimension(boardWidth, boardHeight));
         setBackground(Color.BLACK);
+        addKeyListener(this);
+        setFocusable(true);
 
         //load Images
         wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage(); //getClass refers to PacMan class
@@ -157,8 +159,6 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
         gameloop = new Timer(50, this); // 50 delay and thisrefers to pacmanb object
         gameloop.start();
 
-        addKeyListener(this);
-        setFocusable(true);
         
     }
     public void loadMap(){

@@ -20,8 +20,8 @@ public class App {
         frame.add(pacmanGame);
          // To get full size of panel within the window 
         frame.pack();
-        frame.setVisible(true);
         pacmanGame.requestFocus();
+        frame.setVisible(true);
 
     }
 }
