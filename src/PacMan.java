@@ -66,6 +66,10 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
 
 
         }
+        void reset(){
+            this.x = this.startX;
+            this.y = this .startY;
+        }
     }
     private int rows = 21;
     private int columns = 19;
@@ -245,6 +249,15 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
         }
 // Ghost collision
         for(Block ghost : ghosts){
+            if(collision(ghost, pacman)){
+                lives -= 1;
+                if(lives ==0){
+                    gameOver =true;
+                    return;
+                }
+                resetPositions();
+
+            }
             if(ghost.y == tileSize*9 && ghost.direction != 'U' && ghost.direction != 'D'){
                 ghost.updateDirection('U');
             }
@@ -277,11 +290,24 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
                 a.y + a.height > b.y;
 
     }
+    public void resetPositions(){
+        pacman.reset();
+        pacman.velocityX =0;
+        pacman.velocityY =0;
+        for(Block ghost : ghosts){
+            ghost.reset();
+            char newDirection = directions[random.nextInt(4)];
+            ghost.updateDirection(newDirection);
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         move();
         repaint();  //repeat the paint function
+        if(gameOver){
+            gameloop.stop();
+        }
     }
     @Override
     public void keyTyped(KeyEvent e) {}
@@ -290,6 +316,14 @@ public class PacMan extends JPanel implements ActionListener, KeyListener{
     
     @Override
     public void keyReleased(KeyEvent e) {
+        if(gameOver){
+            loadMap();
+            resetPositions();
+            lives =3;
+            score =0;
+            gameOver = false;
+            gameloop.start();
+        }
        if(e.getKeyCode()== KeyEvent.VK_UP){
         pacman.updateDirection('U');
        }
