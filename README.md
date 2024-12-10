@@ -1,18 +1,11 @@
-## Getting Started
+# 🎮 My Java Creation! 🕹️
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+I’m excited to share my latest project—a **Pacman game** 🎮 built from scratch using **Java JFrame**! This was a fantastic learning experience that allowed me to dive deeper into Java programming and develop my skills in **game development**, **GUI design**, and **logic implementation**.
 
-## Folder Structure
+Creating this game taught me the importance of **problem-solving** and **attention to detail**, especially when coding character movements and interactions. 🚀  
+Developing the mechanics, such as **life tracking**, **score updates**, and **smooth movement**, was both rewarding and educational.
 
-The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+https://github.com/user-attachments/assets/55436127-68c0-479d-8fc5-72f2a8df4920
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
